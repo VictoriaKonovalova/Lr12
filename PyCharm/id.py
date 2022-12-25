@@ -9,16 +9,16 @@ def permutation(s):
         Перестановка чисел
     """
     if len(s) == 1:
-        return [s]  # терминальная ветвь
+        return [s]
     else:
         a = s[0]  # первый элемент списка
-        p = permutation(s[1:])  # все перестановки хвоста
-        r = []
+        p = permutation(s[1:])  # все перестановки, для последовательности без 1-го эл
+        r = []  # создаем массив для записи перестановок
         for pp in p:  # вставляем a в каждую возможную позицию каждой перестановки хвоста
-            for i in range(len(pp)):
+            for i, ithem in enumerate(pp):
                 tmp = pp[0:i] + [a] + pp[i:]
                 r.append(tmp)
-            r.append(pp)
+            r.append(pp + [a])
         return r
 
 
